@@ -1,0 +1,57 @@
+html{
+    direction: rtl;
+}
+/**********************Index Page****************************/
+.title-c{
+    margin-left: 0;
+    margin-right: -40px;
+}
+.list-unstyled{
+    padding-right: 0;
+    padding-left: 15px;
+}
+.section-footer .item-list-a i{
+    transform: rotate(180deg);
+    display: inline-block;
+}
+.socials-a .list-inline-item:not(:last-child) {
+    margin-right: 0;
+    margin-left: 25px;
+}
+.intro-single .title-single-box {
+    padding: 1rem 2rem 1rem 0;
+    border-right: 3px solid #ddb659;
+    border-left: none;
+}
+.breadcrumb-item+.breadcrumb-item::before{
+    float: right;
+}
+.sinse-box .sinse-title span:after{
+    left: 280px;
+}
+.title-box-d .title-d:after{
+    left: unset;
+    right: 0;
+}
+.property-grid .grid-option{
+    text-align: left;
+}
+.pagination-a .pagination .page-link span{
+    transform: rotate(180deg);
+    display: inline-block;
+}
+
+.list-inline-item:not(:last-child) {
+    margin-right:0; 
+    margin-left:0.5rem;
+
+}
+.post-content .post-intro{
+    text-align: justify;
+}
+.post-content .blockquote {
+    padding: 1rem 3rem 1.7rem 3rem;
+    border-left: none;
+    border-right:3px solid #ddb659 ;
+    color: #000000;
+}

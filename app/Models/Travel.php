@@ -1,0 +1,98 @@
+<?php
+
+namespace App\Models;
+
+use \DateTimeInterface;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+
+class Travel extends Model implements HasMedia
+{
+    use SoftDeletes;
+    use InteractsWithMedia;
+    use HasFactory;
+
+    public const ACTIVE_RADIO = [
+        '1' => 'active',
+        '0' => 'inactive',
+    ];
+
+    public $table = 'travels';
+
+    protected $appends = [
+        'image',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    protected $fillable = [
+        'title_en',
+        'title_ar',
+        'title_tr',
+        'price',
+        'description_en',
+        'description_ar',
+        'description_tr',
+        'hotel_name',
+        'visa',
+        'airline_tickets',
+        'translator',
+        'days_num',
+        'active',
+        'notes',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')->fit('crop', 50, 50);
+        $this->addMediaConversion('preview')->fit('crop', 120, 120);
+    }
+
+    public function getImageAttribute()
+    {
+        $file = $this->getMedia('image')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
+
+    public function getTitleAttribute(){
+        if(\App::getLocale() == 'en'){
+            return $this->title_en;
+        }elseif(\App::getLocale() == 'ar'){
+            return $this->title_ar;
+        }else{
+            return $this->title_tr;
+
+        }
+    }
+    public function getDescriptionAttribute(){
+        if(\App::getLocale() == 'en'){
+            return $this->description_en;
+        }elseif(\App::getLocale() == 'ar'){
+            return $this->description_ar;
+        }else{
+            return $this->description_tr;
+        }
+    }
+}
