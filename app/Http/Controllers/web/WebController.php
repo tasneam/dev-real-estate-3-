@@ -24,9 +24,12 @@ class WebController extends Controller
     public function index(Request $request)
     {   
         $pages = Page::all();
-        $slider1 = Slider::where('id', 1)->first();
-        $slider2 = Slider::where('id', 2)->first();
-        $slider3 = Slider::where('id', 3)->first();
+        $sliders = Slider::all();
+        // dd($sliders);
+
+        // $slider1 = Slider::where('id', 1)->first();
+        // $slider2 = Slider::where('id', 2)->first();
+        // $slider3 = Slider::where('id', 3)->first();
         $Service1 = Service::where('id', 1)->first();
         $Service2 = Service::where('id', 2)->first();
         $Service3 = Service::where('id', 3)->first();
@@ -44,9 +47,9 @@ class WebController extends Controller
         return response()->view('web.index',
             ['realestates' => $realestates,
              'latesttravel' => $latesttravel,
-              'slider1' => $slider1,  
-              'slider2' => $slider2,               
-              'slider3' => $slider3, 
+              'sliders' => $sliders,  
+            //   'slider2' => $slider2,               
+            //   'slider3' => $slider3, 
               'Service1' => $Service1,  
               'Service2' => $Service2,               
               'Service3' => $Service3,               
@@ -55,11 +58,10 @@ class WebController extends Controller
             ]);
     }
 
-    public function about()
-    
+    public function about() 
     {
         // $P_about = Page::where('id', 1)->first();
-        $about = Page::where('id', 1)->with('pageItems')->first();
+        $about = Page::where('id', 1)->first();
         return view('web.about')->with('about', $about);
     }
     public function page($local ,$id)
@@ -69,13 +71,12 @@ class WebController extends Controller
         $pagetitle = $page->page_title;
         switch($pagetitle){
             case ('realstategrid'):
-            $slider1 = Slider::where('id', 1)->first();
+            // $slider1 = Slider::where('id', 1)->first();
             $P_real = Page::where('id', 2)->first();
             $reals =Realestate::paginate(9);
         return view('web.page',compact('pagetitle','page'))
         ->with('reals',$reals)
-        ->with('P_real',$P_real)
-        ->with('slider1',$slider1);    
+        ->with('P_real',$P_real);    
 
         break;
         }

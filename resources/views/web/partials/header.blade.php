@@ -12,7 +12,7 @@
         <ul class="navbar-nav">
 
           <li class="nav-item">
-            <a class="nav-link @if (\Request::url() == URL(app()->getLocale().'/index')) active @endif" href="{{ URL(app()->getLocale().'/index') }}">@lang('web.home')</a>
+            <a class="nav-link @if (\Request::url() == URL(app()->getLocale().'/')) active @endif" href="{{ URL(app()->getLocale().'/') }}">@lang('web.home')</a>
           </li>
 
           <li class="nav-item">

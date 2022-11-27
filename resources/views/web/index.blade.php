@@ -13,8 +13,31 @@
   <div class="intro intro-carousel swiper position-relative">
 
     <div class="swiper-wrapper">
-
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{ $slider1->image->getUrl() }})">
+      @forelse($sliders as $slider)
+      <div class="swiper-slide carousel-item-@if($loop->first) active @endif" style="background-image: url('{{ $slider->image->getUrl()}}');">
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="intro-body">          
+                    <h1 class="intro-title mb-4 ">
+                      <span class="color-b">{{$slider->title}} 
+                    </h1>
+                    <p class="intro-title-top">
+                      <br> {!!$slider->description !!}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+       @empty
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{asset('web/img/slide-1.jpg')}})">
         {{-- {{ $slider1->image->getUrl() }} --}}
         {{-- {{str_limit($about->title,50,'')}} --}}
         {{-- {{asset('uploads/'.$sliders->image)}} --}}
@@ -25,14 +48,11 @@
               <div class="row">
                 <div class="col-lg-8">
                   <div class="intro-body">
-                    {{-- <p class="intro-title-top">Doral, Florida
-                      <br> 78345
-                    </p> --}}
                     <h1 class="intro-title mb-4 ">
-                      <span class="color-b">{{$slider1->title}} 
+                      <span class="color-b">title
                     </h1>
                     <p class="intro-title-top">
-                      <br> {!!$slider1->description !!}
+                      <br> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem tenetur commodi animi recusandae nam odit, officiis fugiat aperiam perferendis nostrum optio aut ipsa quo? Asperiores nulla accusantium distinctio temporibus delectus!
                     </p>   
                     
                   </div>
@@ -42,7 +62,9 @@
           </div>
         </div>
       </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{ $slider2->image->getUrl() }})">
+      <div class="swiper-pagination"></div>
+      @endforelse
+      {{-- <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{ $slider2->image->getUrl() }})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -63,30 +85,10 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{ $slider1->image->getUrl() }})">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <h1 class="intro-title mb-4 ">
-                      <span class="color-b">{{$slider3->title}} 
-                    </h1>
-                    <p class="intro-title-top">
-                      <br> {!!$slider3->description !!}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div>--}}
     </div>
     <div class="swiper-pagination"></div>
+
   </div><!-- End Intro Section -->
 
   <main id="main">
@@ -383,69 +385,12 @@
                 </div>
               </div>
             </div><!-- End carousel item -->
-
-            {{-- <div class="carousel-item-c swiper-slide">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
-                  <img src="assets/img/post-7.jpg" alt="" class="img-b img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-header-b">
-                    <div class="card-category-b">
-                      <a href="#" class="category-b">Park</a>
-                    </div>
-                    <div class="card-title-b">
-                      <h2 class="title-2">
-                        <a href="blog-single.html">Park is comming
-                          <br> new</a>
-                      </h2>
-                    </div>
-                    <div class="card-date">
-                      <span class="date-b">18 Sep. 2017</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End carousel item --> --}}
-{{-- 
-            <div class="carousel-item-c swiper-slide">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
-                  <img src="assets/img/post-3.jpg" alt="" class="img-b img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-header-b">
-                    <div class="card-category-b">
-                      <a href="#" class="category-b">Travel</a>
-                    </div>
-                    <div class="card-title-b">
-                      <h2 class="title-2">
-                        <a href="#">Travel is comming
-                          <br> new</a>
-                      </h2>
-                    </div>
-                    <div class="card-date">
-                      <span class="date-b">18 Sep. 2017</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End carousel item --> --}}
-
-              
             @endforelse
-
-         
-
           </div>
         </div>
-
         <div class="news-carousel-pagination carousel-pagination"></div>
       </div>
     </section><!-- End Latest News Section -->
-
- 
-
   </main><!-- End #main -->
 
 
