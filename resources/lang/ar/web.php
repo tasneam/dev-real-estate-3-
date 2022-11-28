@@ -8,7 +8,7 @@ return [
     'student-services'=>'خدمات الطلاب',
     'contact-us' => 'تواصل معنا',
     'arabic' => 'اللغة العربية',
-    'einglish' => 'اللغة الانجليزية ',
+    'english' => 'اللغة الانجليزية ',
     'turkish' => 'اللغة التركية',
     'arab-training-group' => 'المجموعة العربية للتدريب',
 
