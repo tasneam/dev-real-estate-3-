@@ -131,6 +131,22 @@
                             {!! $page->short_description_tr !!}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.page.fields.page_title') }}
+                        </th>
+                        <td>
+                            {{ $page->page_title }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.page.fields.layout') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Page::LAYOUT_RADIO[$page->layout] ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

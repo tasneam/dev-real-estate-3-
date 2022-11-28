@@ -47,6 +47,12 @@
                             {{ trans('cruds.page.fields.title_tr') }}
                         </th>
                         <th>
+                            {{ trans('cruds.page.fields.page_title') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.page.fields.layout') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -84,6 +90,12 @@
                             </td>
                             <td>
                                 {{ $page->title_tr ?? '' }}
+                            </td>
+                            <td>
+                                {{ $page->page_title ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\Page::LAYOUT_RADIO[$page->layout] ?? '' }}
                             </td>
                             <td>
                                 @can('page_show')

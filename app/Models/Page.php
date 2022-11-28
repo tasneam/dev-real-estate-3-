@@ -41,6 +41,8 @@ class Page extends Model implements HasMedia
         'short_description_en',
         'short_description_ar',
         'short_description_tr',
+        'page_title',
+        'layout',
         'created_at',
         'updated_at',
         'deleted_at',

@@ -10,7 +10,19 @@
 
   <main id="main">
     @include('web.partials.introsingle')
-    @switch($pagetitle)
+    @if ($page->Layout == 0 )
+      @if ($pagetitle == 'realestategrid')
+      @include('web.partials.realestate-grid')       
+      @elseif ($pagetitle == 'tourismgrid')
+      @include('web.partials.tourism-grid')    
+      @endif
+      
+    @elseif ($page->Layout == 1 )
+    @include('web.partials.tourism-grid')    
+
+      
+    @endif
+    {{-- @switch($pagetitle)
       @case('about')
       @include('web.partials.about')     
       @break
@@ -25,7 +37,7 @@
       
       @break
       @default
-    @endswitch
+    @endswitch --}}
 
   </main><!-- End #main -->
 

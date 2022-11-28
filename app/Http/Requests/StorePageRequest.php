@@ -56,6 +56,13 @@ class StorePageRequest extends FormRequest
             'short_description_tr' => [
                 'required',
             ],
+            'page_title' => [
+                'string',
+                'nullable',
+            ],
+            'layout' => [
+                'required',
+            ],
         ];
     }
 }

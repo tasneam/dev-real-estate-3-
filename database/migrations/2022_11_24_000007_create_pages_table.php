@@ -22,6 +22,8 @@ class CreatePagesTable extends Migration
             $table->longText('short_description_en');
             $table->longText('short_description_ar');
             $table->longText('short_description_tr');
+            $table->string('page_title')->nullable();
+            $table->string('layout');
             $table->timestamps();
             $table->softDeletes();
         });

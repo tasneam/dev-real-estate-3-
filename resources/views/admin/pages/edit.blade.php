@@ -116,6 +116,27 @@
                 <span class="help-block">{{ trans('cruds.page.fields.short_description_tr_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="page_title">{{ trans('cruds.page.fields.page_title') }}</label>
+                <input class="form-control {{ $errors->has('page_title') ? 'is-invalid' : '' }}" type="text" name="page_title" id="page_title" value="{{ old('page_title', $page->page_title) }}">
+                @if($errors->has('page_title'))
+                    <span class="text-danger">{{ $errors->first('page_title') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.page.fields.page_title_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required">{{ trans('cruds.page.fields.layout') }}</label>
+                @foreach(App\Models\Page::LAYOUT_RADIO as $key => $label)
+                    <div class="form-check {{ $errors->has('layout') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input" type="radio" id="layout_{{ $key }}" name="layout" value="{{ $key }}" {{ old('layout', $page->layout) === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label" for="layout_{{ $key }}">{{ $label }}</label>
+                    </div>
+                @endforeach
+                @if($errors->has('layout'))
+                    <span class="text-danger">{{ $errors->first('layout') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.page.fields.layout_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

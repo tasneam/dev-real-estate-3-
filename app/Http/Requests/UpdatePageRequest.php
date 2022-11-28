@@ -56,6 +56,13 @@ class UpdatePageRequest extends FormRequest
             'short_description_tr' => [
                 'required',
             ],
+            'page_title' => [
+                'string',
+                'nullable',
+            ],
+            'layout' => [
+                'required',
+            ],
         ];
     }
 }

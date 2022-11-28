@@ -68,18 +68,20 @@ class WebController extends Controller
     
     {
         $page = Page::where('id', $id)->with('pageItems')->first();
-        $pagetitle = $page->page_title;
-        switch($pagetitle){
-            case ('realstategrid'):
-            // $slider1 = Slider::where('id', 1)->first();
-            $P_real = Page::where('id', 2)->first();
-            $reals =Realestate::paginate(9);
-        return view('web.page',compact('pagetitle','page'))
-        ->with('reals',$reals)
-        ->with('P_real',$P_real);    
+        $pageLayout = $page->Layout;
+        @if($pageLayout == 0)
 
-        break;
-        }
+        // switch($pagetitle){
+        //     case ('realstategrid'):
+        //     $slider1 = Slider::where('id', 1)->first();
+        //     $P_real = Page::where('id', 2)->first();
+        //     $reals =Realestate::paginate(9);
+        // return view('web.page',compact('pagetitle','page'))
+        // ->with('reals',$reals)
+        // ->with('P_real',$P_real);    
+
+        // break;
+        // }
         return view('web.page',compact('pagetitle','page'));
     }
 
