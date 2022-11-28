@@ -31,7 +31,7 @@
                       {{-- {{URL('/'.app()->getLocale().'/realsingle/ '.$real->id)}} --}}
                       {{-- {{route('/'.app()->getLocale().'web.realestate-single',['id'=>$real->id])}} --}}
                       
-                      <a href="{{URL('/'.app()->getLocale().'/realsingle/'. $real->id)}}">{{$real->title}}
+                      <a href="{{URL('/'.app()->getLocale().'/realsingle/'.$page->id.'/'. $real->id)}}">{{$real->title}}
                         <br /> {{$real->city->name}}</a>
                     </h2>
                   </div>

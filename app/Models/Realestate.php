@@ -17,13 +17,13 @@ class Realestate extends Model implements HasMedia
     use HasFactory;
 
     public const STATUS_RADIO = [
-        'rent' => 'Rent',
-        'Sale' => 'Sale',
+        '0' => 'Rent',
+        '1' => 'Sale',
     ];
 
     public const ACTIVE_RADIO = [
-        'active'   => 'Active',
-        'inactive' => 'Inactive',
+        '0'   => 'Active',
+        '1' => 'Inactive',
     ];
 
     public $table = 'realestates';

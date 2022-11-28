@@ -64,25 +64,34 @@ class WebController extends Controller
         $about = Page::where('id', 1)->first();
         return view('web.about')->with('about', $about);
     }
-    public function page($local ,$id)
-    
-    {
+    public function page($local ,$id){
         $page = Page::where('id', $id)->with('pageItems')->first();
-        $pageLayout = $page->Layout;
-        @if($pageLayout == 0)
+        $pageLayout = $page->layout;
+        if($pageLayout == 0){
+            // $slider1 = Slider::where('id', 1)->first();
+            $reals =Realestate::where('status',0)->paginate(9);
+            return view('web.page')->with('reals',$reals)->with('page',$page);//->with('slider1',$slider1);
+        }
+        elseif($pageLayout == 1){
+            $tourisms =Travel::where('active',0)->paginate(9);
+        return view('web.page')->with('tourisms',$tourisms)->with('page',$page);
+        }
+        elseif($pageLayout == 2){
+        $cities = City::all();
+        $languages = Language::all();
+        $universities = University::all();
+        $departments=Department::all();
+        return view('web.page')
+        ->with('universities', $universities)
+        ->with('cities', $cities)
+        ->with('languages', $languages)
+        ->with('departments', $departments)
+        ->with('page',$page);
+        }
+        elseif($pageLayout == 3)
+        return view('web.page')->with('page',$page);
 
-        // switch($pagetitle){
-        //     case ('realstategrid'):
-        //     $slider1 = Slider::where('id', 1)->first();
-        //     $P_real = Page::where('id', 2)->first();
-        //     $reals =Realestate::paginate(9);
-        // return view('web.page',compact('pagetitle','page'))
-        // ->with('reals',$reals)
-        // ->with('P_real',$P_real);    
-
-        // break;
-        // }
-        return view('web.page',compact('pagetitle','page'));
+        return view('web.page',compact('page'));
     }
 
 
@@ -147,24 +156,28 @@ class WebController extends Controller
         return view('web.realestate-grid')->with('reals',$reals)->with('P_real',$P_real)->with('slider1',$slider1);    
     }
     
-    public function realsingle($local,$id)
+    public function realsingle($local ,$page_id,$id)
     {
         
-        // $P_real = Page::where('id', 3)->first();->with('P_real',$P_real)
+        $page = Page::where('id', $page_id)->first();
         $real = Realestate::find($id);
-        return view('web.realestate-single')->with('real',$real);
+        $desgin = 2;
+        return view('web.single-page')->with('real',$real)->with('desgin',$desgin)->with('page',$page);
     }
 
 
     public function tourism()
-    {
+    {      
+
         // $P_tourisms = Page::where('id', 5)->first();
         $tourisms =Travel::paginate(9);
         return view('web.tourism-grid')->with('tourisms',$tourisms);
     }
 
-    public function tourismSingle($local,$id)
+    public function tourismSingle($local ,$page_id,$id)
     {
+        $page = Page::where('id', $page_id)->first();
+
         // $P_tourism = Page::where('id', 4)->first();
         // $shareComponent = \Share::page(
         //     URL(app()->getLocale().'/tourismsingle/'. $id),           
@@ -179,7 +192,8 @@ class WebController extends Controller
         // ->->with('P_tourism',$P_tourism)->with('shareComponent',$shareComponent)
         
         $tourism = Travel::find($id);
-        return view('web.tourismsingle')->with('tourism',$tourism);
+        $desgin = 1;
+        return view('web.single-page')->with('tourism',$tourism)->with('desgin',$desgin)->with('page',$page);
     }
     
     // public function tourismSingle($id)

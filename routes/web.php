@@ -20,7 +20,7 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}'], 'm
     // Route::get('index', [ WebController::class ,'index'])->name('web.home');
     Route::get('about', [ WebController::class ,'about'])->name('web.about');
     Route::get('real', [ WebController::class ,'real'])->name('web.realestate-grid');
-    Route::get('realsingle/{id}', [ WebController::class ,'realsingle'])->name('web.realestate-single');
+    Route::get('realsingle/{page_id}/{id}', [ WebController::class ,'realsingle'])->name('web.realestate-single');
     Route::get('page/{id}', [ WebController::class ,'page'])->name('web.page');
 
 

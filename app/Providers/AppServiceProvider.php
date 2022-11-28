@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Page;
 use App\Models\Setting;
 use App\Models\SocialLink;
 use Illuminate\Pagination\Paginator;
@@ -29,11 +30,14 @@ class AppServiceProvider extends ServiceProvider
         //
         $links = SocialLink::all();
         $setting = Setting::first();
+        $headerpages = Page::all();
         // $page = Page::all();
 
         view()->share('links',$links);
         view()->share('setting',$setting);
         // view()->share('page',$page);
+        view()->share('headerpages',$headerpages);
+
 
 
         Paginator::useBootstrap();

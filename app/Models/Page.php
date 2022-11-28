@@ -17,7 +17,14 @@ class Page extends Model implements HasMedia
     use HasFactory;
 
     public $table = 'pages';
+    public const LAYOUT_RADIO = [
+        '0' => 'realestate',
+        '1'=>'tourism',
+        '2' => 'studentServices',
+        '3' => 'contactus',
+        '4' => 'about',
 
+    ];
     protected $appends = [
         'image',
     ];

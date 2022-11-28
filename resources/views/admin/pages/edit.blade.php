@@ -5,7 +5,7 @@
     <div class="card-header">
         {{ trans('global.edit') }} {{ trans('cruds.page.title_singular') }}
     </div>
-
+  
     <div class="card-body">
         <form method="POST" action="{{ route("admin.pages.update", [$page->id]) }}" enctype="multipart/form-data">
             @method('PUT')

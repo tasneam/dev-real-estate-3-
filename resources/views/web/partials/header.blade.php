@@ -14,6 +14,12 @@
           <li class="nav-item">
             <a class="nav-link @if (\Request::url() == URL(app()->getLocale().'/')) active @endif" href="{{ URL(app()->getLocale().'/') }}">@lang('web.home')</a>
           </li>
+          @forelse ($headerpages as $headerpage )
+          <li class="nav-item">
+            <a class="nav-link @if (\Request::url() == URL(app()->getLocale().'/page/'.$headerpage->id)) active @endif" href="{{ URL(app()->getLocale().'/page/'.$headerpage->id)}}">{{$headerpage->title}}</a>
+          </li>
+          @empty
+            
 
           <li class="nav-item">
             <a class="nav-link @if (\Request::url() == URL(app()->getLocale().'/page/1')) active @endif" href="{{ URL(app()->getLocale().'/page/1')}}">@lang('web.about')</a>
@@ -33,6 +39,8 @@
           <li class="nav-item">
             <a class="nav-link @if (\Request::url() == URL(app()->getLocale().'/contactus')) active @endif" href="{{ URL(app()->getLocale().'/contactus') }}">@lang('web.contact-us')</a>
           </li>
+          
+          @endforelse
         </ul>
       </div>
 

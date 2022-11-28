@@ -10,17 +10,12 @@
 
   <main id="main">
     @include('web.partials.introsingle')
-    @if ($page->layout == 0 )
-    @include('web.partials.realestate-grid')
-    @elseif ($page->layout == 1 )
-    @include('web.partials.tourism-grid')
-    @elseif ($page->layout == 2 )
-    @include('web.partials.Student-Services')
-    @elseif ($page->layout == 3 )
-    @include('web.partials.contact')
-    @else    
-    @include('web.partials.about')     
-    @endif
+     @if ($desgin == 1 )
+       @include('web.partials.singletourism')    
+     @elseif ($desgin == 2 )
+       @include('web.partials.realestate-single')    
+
+     @endif
 
       
     {{-- @switch($pagetitle)
@@ -46,6 +41,8 @@
 
 @endsection
 
+
 @section('script')
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="{{asset('contactform/contactform.js')}}"></script>
 @endsection
